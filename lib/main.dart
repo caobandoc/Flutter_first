@@ -17,14 +17,45 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Hola Mundo Feliz"),
+          title: const Text("Share"),
         ),
-        body: Center(
-          child: Text("Hola Mundo Platzi"),
+        body: Stack(
+          children: <Widget>[
+            _imagenFondo(),
+            _textoCentral(),
+          ],
         ),
       ),//const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+
+  Widget _imagenFondo() {
+    return const Image(
+      image: AssetImage('assets/images/Torre_Eiffel.jpg'),
+      height: double.maxFinite,
+      width: double.maxFinite,
+      fit: BoxFit.cover,
+    );
+  }
+
+  Widget _textoCentral(){
+    return Center(
+      child: Container(
+        height: 100,
+        color: Color.fromRGBO(0, 0, 0, 0.5),
+        child: const Center(
+          child: Text(
+            'Francia',
+            style: TextStyle(
+              fontSize: 40,
+              color: Colors.white
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 }
 
 class MyHomePage extends StatefulWidget {
