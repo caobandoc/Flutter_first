@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:trips_app/header.dart';
+import 'package:trips_app/reviewList.dart';
 import 'description_place.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.light
+      )
+  );
   runApp(const MyApp());
 }
 
@@ -12,17 +21,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+  return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
 
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-          appBar: AppBar(
+          /*appBar: AppBar(
             title: Text("Hola mundo feliz"),
-          ),
-          body: new DescriptionPlace("Bahamas", 4, texto),
+          ),*/
+          body: Stack(
+            children: [
+              ListView(
+                children: [
+                  DescriptionPlace("Bahamas", 4, texto),
+                  ReviewList()
+                ],
+              ),
+              Header(),
+            ],
+          )
         )//const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
